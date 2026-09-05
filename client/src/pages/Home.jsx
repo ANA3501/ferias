@@ -1,27 +1,22 @@
 import { useMemo, useState } from "react";
 import {
-  ArrowUpRight,
-  Bookmark,
-  CalendarDays,
   CarFront,
-  Check,
-  ChevronRight,
-  Clock3,
   Compass,
-  Copy,
-  Heart,
   Hotel,
   MapPin,
-  Menu,
   Navigation,
   Palmtree,
-  Route,
   Sparkles,
   Sun,
   Utensils,
   Waves,
-  X,
 } from "lucide-react";
+import { Header } from "../components/home/Header";
+import { HeroSection } from "../components/home/HeroSection";
+import { RouteIntro } from "../components/home/RouteIntro";
+import { ItinerarySection } from "../components/home/ItinerarySection";
+import { StaySection } from "../components/home/StaySection";
+import { Footer } from "../components/home/Footer";
 
 const images = {
   punta1: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
@@ -36,186 +31,246 @@ const itinerary = [
     id: 1,
     destination: "Punta Umbría",
     shortDestination: "Punta",
-    date: "sexta-feira · 12 jul",
+    date: "dia 1 · sexta-feira",
     kicker: "Dia 01 / 05",
-    title: "Chegar ao sal",
+    title: "Chegada e descanso na costa",
     description:
-      "Primeiro, baixar o ritmo. O plano é deixar as malas, sentir a areia entre os dedos e descobrir onde o Atlântico encontra a luz de fim de tarde.",
+      "Primeiro dia para entrar no ritmo da viagem: chegar, deixar malas e deixar o corpo desacelerar junto ao mar. O plano é aproveitar a praia e a tarde com calma, antes de se abrir para a cidade.",
     image: images.punta1,
     imagePosition: "center",
     accent: "sea",
-    mood: "maré alta",
-    duration: "tarde lenta",
+    mood: "chegada lenta",
+    duration: "tarde inteira",
     distance: "a pé",
     activities: [
       {
         time: "15:30",
-        title: "Check-in + passeio de reconhecimento",
+        title: "Chegada e check-in",
         text: "Caminhada sem destino pela passarela de madeira até a praia.",
         icon: Hotel,
       },
       {
-        time: "19:45",
-        title: "Pôr do sol no espigão",
-        text: "A primeira foto da viagem fica para a luz dourada, não para a chegada.",
-        icon: Sun,
+        time: "17:00",
+        title: "Tarde inteira na praia",
+        text: "Tempo livre para descansar, tomar sol e deixar a maré marcar o ritmo do dia.",
+        icon: Waves,
       },
       {
-        time: "21:15",
-        title: "Peixe grelhado no porto",
-        text: "Mesa simples, vinho branco gelado e o som dos barcos voltando.",
+        time: "20:30",
+        title: "Passeio pelo centro ao fim da tarde",
+        text: "Dar uma volta pelo centro e sentir a vila sem pressa antes do jantar.",
+        icon: Compass,
+      },
+      {
+        time: "21:30",
+        title: "Jantar económico",
+        text: "Opção simples e barata para começar a viagem sem gastar muito e sem perder tempo.",
         icon: Utensils,
       },
     ],
-    note: "Não tente fazer muito hoje. O luxo é começar devagar.",
+    note: "O melhor começo é leve: praia, descanso e pouco plano.",
   },
   {
     id: 2,
     destination: "Punta Umbría",
     shortDestination: "Punta",
-    date: "sábado · 13 jul",
+    date: "dia 2 · sábado",
     kicker: "Dia 02 / 05",
-    title: "Entre pinheiros e maré",
+    title: "Praia, almoço e pôr do sol",
     description:
-      "Um dia inteiro para a costa: manhã de bicicleta pelos pinhais, almoço comprido e uma enseada para desaparecer até o sol baixar.",
+      "Um dia de praia sem pressa: manhã tranquila, almoço sem compromisso e uma tarde para descansar ou ir até Los Enebrales antes do sol desaparecer.",
     image: images.punta2,
     imagePosition: "right center",
     accent: "sea",
-    mood: "vento norte",
-    duration: "dia aberto",
+    mood: "mar serena",
+    duration: "dia livre",
     distance: "18 km",
     activities: [
       {
-        time: "09:00",
-        title: "Bicicleta pela flecha litoral",
-        text: "Pedalar sem pressa, com paradas para miradouros e banho de mar.",
-        icon: Palmtree,
+        time: "09:30",
+        title: "Manhã de praia",
+        text: "Tempo livre na areia, com água, chapéu e um ritmo sem agenda.",
+        icon: Sun,
       },
       {
-        time: "13:30",
-        title: "Almoço de conquilhas",
-        text: "Reservar uma mesa externa e pedir o que chegou no barco hoje.",
+        time: "13:00",
+        title: "Almoço",
+        text: "Paragem de comida calma, sem pressa e com vista para a costa.",
         icon: Utensils,
       },
       {
-        time: "18:10",
-        title: "Praia de Los Enebrales",
-        text: "Areia larga, sombra de zimbro e tempo suficiente para não olhar o relógio.",
-        icon: Waves,
+        time: "16:00",
+        title: "Tarde tranquila na praia ou Los Enebrales",
+        text: "Escolher entre descansar na praia ou ir para uma zona mais calma e menos movimentada.",
+        icon: Palmtree,
+      },
+      {
+        time: "20:00",
+        title: "Pôr do sol",
+        text: "O melhor momento do dia é quando a luz desce e a praia fica mais silenciosa.",
+        icon: Sun,
+      },
+      {
+        time: "21:30",
+        title: "Jantar",
+        text: "Um jantar simples, sem agenda, para fechar o dia como se fosse uma pausa de férias.",
+        icon: Utensils,
       },
     ],
-    note: "A costa pede espaço: leve água, chapéu e zero pressa.",
+    note: "Na costa, o melhor mesmo é não programar demais.",
   },
   {
     id: 3,
-    destination: "Punta Umbría",
-    shortDestination: "Punta",
-    date: "domingo · 14 jul",
+    destination: "Punta Umbría → Sevilha",
+    shortDestination: "Punta → Sevilha",
+    date: "dia 3 · domingo",
     kicker: "Dia 03 / 05",
-    title: "A última maré",
+    title: "Última praia e chegada à cidade",
     description:
-      "Fechar a parte costeira com um passeio de barco pela ria e uma travessia bonita rumo ao interior. Sevilha entra quando o céu começa a ficar cor de laranja.",
-    image: images.punta3,
+      "Aproveitar a manhã na praia, almoçar e seguir para Sevilha com a tarde livre para explorar o centro e jantar pelos azulejos.",
+    image: "/images/dia-3-nao-encontrada.jpg",
     imagePosition: "left center",
     accent: "sea",
-    mood: "último mergulho",
+    mood: "transição",
     duration: "manhã + estrada",
     distance: "104 km",
     activities: [
       {
-        time: "08:30",
-        title: "Pequeno-almoço com vista",
-        text: "Café, tostada com tomate e a última caminhada junto à água.",
-        icon: Sun,
+        time: "09:00",
+        title: "Aproveitar a manhã para praia",
+        text: "Último momento de mar e areia antes de deixar Punta Umbría.",
+        icon: Waves,
       },
       {
-        time: "10:00",
-        title: "Barco pela ria",
-        text: "Ver a paisagem de outra escala antes de dizer adeus à areia.",
+        time: "13:00",
+        title: "Almoço",
+        text: "Comer sem pressa e preparar a saída para a cidade.",
+        icon: Utensils,
+      },
+      {
+        time: "15:00",
+        title: "Partir para Sevilha",
+        text: "A estrada rumo à cidade com a tarde a ganhar cor e a luz a mudar de tom.",
+        icon: CarFront,
+      },
+      {
+        time: "18:30",
+        title: "Check-in",
+        text: "Descansar, guardar as malas e preparar a primeira noite na cidade.",
+        icon: Hotel,
+      },
+      {
+        time: "21:00",
+        title: "Passeio noturno por Santa Cruz + centro",
+        text: "Andar pelas ruas mais bonitas da cidade antes de jantar e sentir o clima de Sevilha.",
         icon: Navigation,
       },
       {
-        time: "14:00",
-        title: "Estrada para Sevilha",
-        text: "Paragem curta em Huelva e chegada ao centro no fim da tarde.",
-        icon: CarFront,
+        time: "22:30",
+        title: "Tapas",
+        text: "Uma mesa pequena, petiscos e uma noite de cidade sem agenda rígida.",
+        icon: Utensils,
       },
     ],
-    note: "Deixe uma tote bag vazia: ela volta cheia de sal, areia e histórias.",
+    note: "Hoje é a mudança de mar para cidade: sair da costa e entrar no calor urbano.",
   },
   {
     id: 4,
     destination: "Sevilha",
     shortDestination: "Sevilha",
-    date: "segunda-feira · 15 jul",
+    date: "dia 4 · segunda-feira",
     kicker: "Dia 04 / 05",
-    title: "Azulejos ao sol",
+    title: "Conhecer a cidade",
     description:
-      "Sevilha se revela caminhando. Começar cedo no Alcázar, atravessar a Plaza de España e terminar a tarde entre azulejos, sombra e laranjeiras.",
+      "Um dia para ver o essencial da cidade: Plaza de España, Parque María Luisa, Santa Cruz, Catedral e Giralda, com a tarde a abrir para Triana e o rio.",
     image: images.sevilla1,
     imagePosition: "center",
     accent: "terra",
-    mood: "luz quente",
-    duration: "dia a pé",
+    mood: "cidade em movimento",
+    duration: "dia inteiro",
     distance: "7,4 km",
     activities: [
       {
-        time: "08:45",
-        title: "Real Alcázar, antes do calor",
-        text: "Entrar na primeira faixa e guardar tempo para os jardins.",
+        time: "09:30",
+        title: "Plaza de España",
+        text: "Começar pela grande vista de Sevilha e pelo ritmo das ruas mais emblemáticas.",
+        icon: Sparkles,
+      },
+      {
+        time: "11:00",
+        title: "Parque María Luisa",
+        text: "Pausar no parque para descansar e ver a cidade com ar mais espaçoso.",
         icon: Compass,
       },
       {
-        time: "12:30",
-        title: "Tapas em Santa Cruz",
-        text: "Uma mesa pequena, duas ou três paragens e nenhum menu turístico.",
-        icon: Utensils,
+        time: "13:00",
+        title: "Santa Cruz",
+        text: "Andar pelos bairros históricos, rua por rua, com pequenos momentos de pausa.",
+        icon: MapPin,
       },
       {
-        time: "17:30",
-        title: "Plaza de España + Parque María Luisa",
-        text: "A luz lateral deixa os azulejos ainda mais cinematográficos.",
+        time: "15:30",
+        title: "Catedral / Giralda",
+        text: "Aproveitar a parte histórica e subir para ver a cidade de cima.",
+        icon: Compass,
+      },
+      {
+        time: "18:30",
+        title: "Triana + rio Guadalquivir",
+        text: "À tarde, vale a pena ir para a zona de Triana e ver o rio no fim do dia.",
+        icon: Navigation,
+      },
+      {
+        time: "22:00",
+        title: "Noite livre",
+        text: "Luz, música e cidade até tarde sem um plano fixo.",
         icon: Sparkles,
       },
     ],
-    note: "Em Sevilha, a sombra também faz parte do roteiro.",
+    note: "Sevilha pede andar, parar e olhar cada esquina como se fosse um cenário.",
   },
   {
     id: 5,
     destination: "Sevilha",
     shortDestination: "Sevilha",
-    date: "terça-feira · 16 jul",
+    date: "dia 5 · terça-feira",
     kicker: "Dia 05 / 05",
-    title: "A cidade em camadas",
+    title: "Compras e última noite",
     description:
-      "Último dia para subir, provar e ouvir. Catedral, Metropol Parasol e uma despedida longa num balcão onde a cidade passa devagar.",
+      "Último dia com ritmo mais calmo: manhã tranquila, almoço e tarde dedicada às compras antes da última noite na cidade.",
     image: images.sevilla2,
     imagePosition: "center",
     accent: "terra",
-    mood: "última volta",
-    duration: "dia aberto",
+    mood: "última noite",
+    duration: "dia leve",
     distance: "5,8 km",
     activities: [
       {
-        time: "09:30",
-        title: "Catedral + Giralda",
-        text: "Subir no horário fresco e olhar Sevilha de cima, sem pressa.",
-        icon: Compass,
+        time: "10:00",
+        title: "Manhã mais tranquila",
+        text: "Sem pressa para começar, com tempo para aproveitar a cidade e a última manhã sem agenda.",
+        icon: Sun,
       },
       {
-        time: "13:45",
-        title: "Almoço no mercado",
-        text: "Ir de banca em banca: jamón, queijo, fruta e algo doce para dividir.",
+        time: "13:00",
+        title: "Almoço",
+        text: "Paragem para comer bem antes de dedicar a tarde às compras.",
         icon: Utensils,
       },
       {
-        time: "19:00",
-        title: "Las Setas ao entardecer",
-        text: "A última vista é urbana: terraços, telhados e o céu a mudar de cor.",
+        time: "15:30",
+        title: "Tarde dedicada às compras",
+        text: "Calle Sierpes, Tetuán ou um centro comercial/outlet para aproveitar o último dia.",
+        icon: Sparkles,
+      },
+      {
+        time: "20:30",
+        title: "Última noite em Sevilha",
+        text: "Fechar a viagem com um passeio tranquilo, um jantar e o sabor da cidade sem pressa.",
         icon: Sun,
       },
     ],
-    note: "A melhor lembrança é um lugar para onde você ainda quer voltar.",
+    note: "A melhor lembrança não é o checklist — é a última noite em que tudo ficou em paz.",
   },
 ];
 
@@ -224,39 +279,18 @@ const destinations = [
   { name: "Sevilha", days: "02 dias", range: [4, 5], color: "terra" },
 ];
 
-function IconPill({ icon: Icon, children }) {
-  return (
-    <span className="icon-pill">
-      <Icon size={14} strokeWidth={1.8} />
-      {children}
-    </span>
-  );
-}
-
-function Logo() {
-  return (
-    <a className="brand" href="#top" aria-label="Maré e Azulejo, início">
-      <span className="brand-symbol">
-        <span />
-        <span />
-      </span>
-      <span className="brand-copy">
-        <strong>Maré &amp; Azulejo</strong>
-        <small>Andaluzia em 05 dias</small>
-      </span>
-    </a>
-  );
-}
-
 export default function Home() {
   const [activeDay, setActiveDay] = useState(1);
   const [menuOpen, setMenuOpen] = useState(false);
   const [saved, setSaved] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const currentDay = itinerary[activeDay - 1];
   const visibleDestinations = useMemo(
-    () => destinations.map((destination) => ({ ...destination, active: activeDay >= destination.range[0] && activeDay <= destination.range[1] })),
+    () =>
+      destinations.map((destination) => ({
+        ...destination,
+        active: activeDay >= destination.range[0] && activeDay <= destination.range[1],
+      })),
     [activeDay],
   );
 
@@ -279,208 +313,29 @@ export default function Home() {
 
   return (
     <div className="app-shell" id="top">
-      <header className="site-nav">
-        <Logo />
-        <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
-          <a href="#roteiro" onClick={() => setMenuOpen(false)}>Roteiro</a>
-          <a href="#ritmo" onClick={() => setMenuOpen(false)}>O ritmo</a>
-          <a href="#notas" onClick={() => setMenuOpen(false)}>Notas de viagem</a>
-        </nav>
-        <div className="nav-actions">
-          <span className="trip-counter"><span className="counter-dot" /> 03 + 02 dias</span>
-          <button className="icon-button menu-toggle" type="button" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}>
-            {menuOpen ? <X size={19} /> : <Menu size={19} />}
-          </button>
-          <button className={`save-button ${saved ? "is-saved" : ""}`} type="button" onClick={() => setSaved((value) => !value)}>
-            <Heart size={16} fill={saved ? "currentColor" : "none"} />
-            {saved ? "Guardado" : "Guardar roteiro"}
-          </button>
-        </div>
-      </header>
+      <Header
+        menuOpen={menuOpen}
+        onToggleMenu={() => setMenuOpen((value) => !value)}
+        saved={saved}
+        onToggleSaved={() => setSaved((value) => !value)}
+        onCloseMenu={() => setMenuOpen(false)}
+      />
 
       <main>
-        <section className="hero container" aria-labelledby="hero-title">
-          <div className="hero-copy reveal-up">
-            <div className="eyebrow"><span className="eyebrow-line" /> Caderno de viagem · Andaluzia 2024</div>
-            <h1 id="hero-title">Do sal ao sol<br /><em>sem perder o sul.</em></h1>
-            <p className="hero-lede">Um roteiro de cinco dias entre o Atlântico de Punta Umbría e as fachadas quentes de Sevilha — feito para andar, comer bem e deixar a luz decidir o caminho.</p>
-            <div className="hero-actions">
-              <button className="primary-button" type="button" onClick={() => document.getElementById("roteiro")?.scrollIntoView({ behavior: "smooth" })}>
-                Explorar os dias <ArrowUpRight size={17} />
-              </button>
-              <a className="text-link" href="https://www.google.com/maps/dir/Punta+Umbria/Seville" target="_blank" rel="noreferrer">
-                <Navigation size={15} /> Abrir no mapa
-              </a>
-            </div>
-            <div className="hero-meta">
-              <IconPill icon={Waves}>3 dias de costa</IconPill>
-              <IconPill icon={Sparkles}>2 dias de cidade</IconPill>
-              <IconPill icon={CarFront}>104 km de transição</IconPill>
-            </div>
-          </div>
-
-          <div className="hero-visual reveal-up delay-1" role="img" aria-label="Praia de Punta Umbría ao longo da costa atlântica">
-            <div className="visual-grain" />
-            <div className="visual-topline"><span>36° 57′ N</span><span>MARÉ ALTA</span></div>
-            <div className="visual-sticker"><span>anotar</span><strong>mais<br />mar.</strong></div>
-            <div className="hero-caption">
-              <div>
-                <span className="caption-kicker">Punta Umbría · Huelva</span>
-                <strong>O roteiro começa<br />onde a terra afrouxa.</strong>
-              </div>
-              <span className="caption-mark">01</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="route-intro container" id="ritmo" aria-labelledby="route-title">
-          <div className="section-label">01 <span /> a rota em duas paisagens</div>
-          <div className="intro-grid">
-            <div>
-              <h2 id="route-title">Uma viagem,<br /><em>duas marés.</em></h2>
-            </div>
-            <div className="intro-copy">
-              <p>Primeiro o corpo desacelera junto ao Atlântico. Depois, já com a pele salgada, a viagem sobe para o calor, os azulejos e as noites longas de Sevilha.</p>
-              <button className="inline-link" type="button" onClick={copyRoute}>
-                {copied ? <Check size={15} /> : <Copy size={15} />}
-                {copied ? "Roteiro copiado" : "Copiar resumo do roteiro"}
-              </button>
-            </div>
-          </div>
-
-          <div className="route-card">
-            <div className="route-card-heading">
-              <span>Da água à arquitetura</span>
-              <span>05 dias · 02 bases</span>
-            </div>
-            <div className="route-mapline" aria-label="Percurso de Punta Umbría a Sevilha">
-              <div className="route-stop active-stop">
-                <div className="stop-marker"><Waves size={17} /></div>
-                <span className="stop-number">01 — 03</span>
-                <strong>Punta Umbría</strong>
-                <small>sal · pinheiros · maré</small>
-              </div>
-              <div className="route-transfer">
-                <span>104 km</span>
-                <div className="route-dash"><i /><i /><i /><i /><i /></div>
-                <CarFront size={15} />
-              </div>
-              <div className="route-stop city-stop">
-                <div className="stop-marker"><Sparkles size={17} /></div>
-                <span className="stop-number">04 — 05</span>
-                <strong>Sevilha</strong>
-                <small>azulejo · sombra · noite</small>
-              </div>
-            </div>
-            <div className="route-footnote"><span className="mini-sun"><Sun size={14} /></span> O truque do roteiro: sair da costa no domingo à tarde, quando a cidade começa a dourar.</div>
-          </div>
-        </section>
-
-        <section className="itinerary-section" id="roteiro" aria-labelledby="itinerary-title">
-          <div className="container">
-            <div className="itinerary-heading">
-              <div>
-                <div className="section-label light-label">02 <span /> o roteiro, dia a dia</div>
-                <h2 id="itinerary-title">Escolha a próxima<br /><em>paragem.</em></h2>
-              </div>
-              <div className="heading-aside">
-                <span className="current-index">0{activeDay} <i>/</i> 05</span>
-                <p>Um plano leve, com espaço para improvisar quando a luz estiver boa.</p>
-              </div>
-            </div>
-
-            <div className="destination-tabs" role="tablist" aria-label="Destinos">
-              {visibleDestinations.map((destination) => (
-                <button
-                  key={destination.name}
-                  className={`destination-tab ${destination.active ? "active" : ""} ${destination.color}`}
-                  type="button"
-                  role="tab"
-                  aria-selected={destination.active}
-                  onClick={() => goToDay(destination.range[0])}
-                >
-                  <span className="tab-symbol">{destination.color === "sea" ? <Waves size={17} /> : <Sparkles size={17} />}</span>
-                  <span><strong>{destination.name}</strong><small>{destination.days}</small></span>
-                  <ChevronRight size={17} />
-                </button>
-              ))}
-            </div>
-
-            <div className="day-selector" role="tablist" aria-label="Dias do roteiro">
-              {itinerary.map((day) => (
-                <button key={day.id} type="button" className={`day-button ${activeDay === day.id ? "active" : ""}`} onClick={() => setActiveDay(day.id)} role="tab" aria-selected={activeDay === day.id}>
-                  <span>dia</span><strong>0{day.id}</strong>
-                </button>
-              ))}
-            </div>
-
-            <article className={`day-feature accent-${currentDay.accent}`} key={currentDay.id}>
-              <div className="day-image" style={{ backgroundImage: `url(${currentDay.image})`, backgroundPosition: currentDay.imagePosition }}>
-                <div className="day-image-overlay" />
-                <div className="day-image-top"><span>{currentDay.kicker}</span><span>{currentDay.mood}</span></div>
-                <div className="day-image-bottom"><span className="image-location"><MapPin size={14} /> {currentDay.destination}</span><span className="image-arrow"><ArrowUpRight size={18} /></span></div>
-              </div>
-              <div className="day-content">
-                <div className="day-content-top"><span className="date-label"><CalendarDays size={15} /> {currentDay.date}</span><span className="day-accent-line" /></div>
-                <h3>{currentDay.title}</h3>
-                <p className="day-description">{currentDay.description}</p>
-                <div className="day-facts">
-                  <span><Clock3 size={15} /> {currentDay.duration}</span>
-                  <span><Route size={15} /> {currentDay.distance}</span>
-                </div>
-                <div className="activity-list">
-                  {currentDay.activities.map((activity) => {
-                    const ActivityIcon = activity.icon;
-                    return (
-                      <div className="activity-row" key={activity.time}>
-                        <time>{activity.time}</time>
-                        <span className="activity-icon"><ActivityIcon size={15} /></span>
-                        <div><strong>{activity.title}</strong><p>{activity.text}</p></div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="day-note"><Sparkles size={14} /><span><strong>nota de ritmo</strong> {currentDay.note}</span></div>
-              </div>
-            </article>
-
-            <div className="next-day-row">
-              <button type="button" onClick={() => setActiveDay(activeDay === 5 ? 1 : activeDay + 1)}>
-                <span>{activeDay === 5 ? "voltar ao início" : "próxima paragem"}</span>
-                <strong>{activeDay === 5 ? "Dia 01 · Chegar ao sal" : `Dia 0${activeDay + 1} · ${itinerary[activeDay].title}`}</strong>
-                <ArrowUpRight size={18} />
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <section className="stay-section container" id="notas" aria-labelledby="stay-title">
-          <div className="section-label">03 <span /> notas para levar</div>
-          <div className="stay-grid">
-            <div className="stay-copy">
-              <h2 id="stay-title">O que cabe<br /><em>na mala.</em></h2>
-              <p>O essencial para cinco dias de calor, sal, sombra e caminhadas longas.</p>
-              <a className="inline-link" href="https://www.google.com/maps/dir/Punta+Umbria/Seville" target="_blank" rel="noreferrer"><MapPin size={15} /> Ver a rota completa</a>
-            </div>
-            <div className="packing-card">
-              <div className="packing-card-heading"><span>checklist · 05 dias</span><Bookmark size={17} /></div>
-              <ul>
-                <li><span className="check-circle"><Check size={13} /></span> uma camisa de linho para as noites</li>
-                <li><span className="check-circle"><Check size={13} /></span> sandálias que aguentem 7 km</li>
-                <li><span className="check-circle"><Check size={13} /></span> garrafa de água sempre cheia</li>
-                <li><span className="check-circle"><Check size={13} /></span> espaço para cerâmica e sal marinho</li>
-              </ul>
-              <div className="packing-footer"><span><Hotel size={14} /> 02 bases</span><span><Sun size={14} /> 31° previsto</span></div>
-            </div>
-          </div>
-        </section>
+        <HeroSection />
+        <RouteIntro copied={copied} onCopyRoute={copyRoute} />
+        <ItinerarySection
+          itinerary={itinerary}
+          activeDay={activeDay}
+          visibleDestinations={visibleDestinations}
+          onSelectDay={setActiveDay}
+          onSelectDestination={goToDay}
+          onAdvanceDay={() => setActiveDay((current) => (current === 5 ? 1 : current + 1))}
+        />
+        <StaySection />
       </main>
 
-      <footer className="site-footer container">
-        <Logo />
-        <span>feito para viajar devagar · 2024</span>
-        <a href="#top">voltar ao topo <ArrowUpRight size={14} /></a>
-      </footer>
+      <Footer />
     </div>
   );
 }
