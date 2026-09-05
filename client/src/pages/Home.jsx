@@ -21,9 +21,9 @@ import { Footer } from "../components/home/Footer";
 const images = {
   punta1: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
   punta2: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80",
-  punta3: "https://images.unsplash.com/photo-1493558103817-58b2924b5715?auto=format&fit=crop&w=1600&q=80",
-  sevilla1: "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1600&q=80",
-  sevilla2: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=1600&q=80",
+  punta3: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=80", 
+sevilla1: "https://images.unsplash.com/photo-1509840841025-9088ba78a826?auto=format&fit=crop&w=1600&q=80", 
+sevilla2: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=1600&q=80", 
 };
 
 const itinerary = [
@@ -94,7 +94,7 @@ const itinerary = [
       },
       {
         time: "13:00",
-        title: "Almoço na Bodeguita la Mantilla/Vaivén Arroces y Paellas, Restaurante Periañez(barat)",
+        title: "Almoço na Bodeguita la Mantilla / Vaivén Arroces y Paellas / Restaurante Periañez(barat)",
         text: "Paragem de comida calma, sem pressa e com vista para a costa.",
         icon: Utensils,
       },
@@ -143,7 +143,7 @@ const itinerary = [
       },
       {
         time: "13:00",
-        title: "Almoço na Bodeguita la Mantilla/Vaivén Arroces y Paellas, Restaurante Periañez(barato)",
+        title: "Almoço na Bodeguita la Mantilla / Vaivén Arroces y Paellas / Restaurante Periañez(barato)",
         text: "Comer sem pressa e preparar a saída para a cidade.",
         icon: Utensils,
       },
