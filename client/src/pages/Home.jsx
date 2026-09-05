@@ -24,9 +24,11 @@ import {
 } from "lucide-react";
 
 const images = {
-  punta: "/images/punta-umbria.jpg",
-  tiles: "/images/sevilla-azulejos.jpg",
-  plaza: "/images/sevilla-plaza.jpg",
+  punta1: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+  punta2: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80",
+  punta3: "https://images.unsplash.com/photo-1493558103817-58b2924b5715?auto=format&fit=crop&w=1600&q=80",
+  sevilla1: "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1600&q=80",
+  sevilla2: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=1600&q=80",
 };
 
 const itinerary = [
@@ -39,7 +41,7 @@ const itinerary = [
     title: "Chegar ao sal",
     description:
       "Primeiro, baixar o ritmo. O plano é deixar as malas, sentir a areia entre os dedos e descobrir onde o Atlântico encontra a luz de fim de tarde.",
-    image: images.punta,
+    image: images.punta1,
     imagePosition: "center",
     accent: "sea",
     mood: "maré alta",
@@ -76,7 +78,7 @@ const itinerary = [
     title: "Entre pinheiros e maré",
     description:
       "Um dia inteiro para a costa: manhã de bicicleta pelos pinhais, almoço comprido e uma enseada para desaparecer até o sol baixar.",
-    image: images.punta,
+    image: images.punta2,
     imagePosition: "right center",
     accent: "sea",
     mood: "vento norte",
@@ -113,7 +115,7 @@ const itinerary = [
     title: "A última maré",
     description:
       "Fechar a parte costeira com um passeio de barco pela ria e uma travessia bonita rumo ao interior. Sevilha entra quando o céu começa a ficar cor de laranja.",
-    image: images.punta,
+    image: images.punta3,
     imagePosition: "left center",
     accent: "sea",
     mood: "último mergulho",
@@ -150,7 +152,7 @@ const itinerary = [
     title: "Azulejos ao sol",
     description:
       "Sevilha se revela caminhando. Começar cedo no Alcázar, atravessar a Plaza de España e terminar a tarde entre azulejos, sombra e laranjeiras.",
-    image: images.tiles,
+    image: images.sevilla1,
     imagePosition: "center",
     accent: "terra",
     mood: "luz quente",
@@ -187,7 +189,7 @@ const itinerary = [
     title: "A cidade em camadas",
     description:
       "Último dia para subir, provar e ouvir. Catedral, Metropol Parasol e uma despedida longa num balcão onde a cidade passa devagar.",
-    image: images.plaza,
+    image: images.sevilla2,
     imagePosition: "center",
     accent: "terra",
     mood: "última volta",
