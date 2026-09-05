@@ -63,7 +63,7 @@ const itinerary = [
       },
       {
         time: "21:30",
-        title: "Jantar económico",
+        title: "Jantar Meson Diego / Al Carbón(grelhados) / Periañez Ría Brasas(grelhados moderno)",
         text: "Opção simples e barata para começar a viagem sem gastar muito e sem perder tempo.",
         icon: Utensils,
       },
@@ -94,7 +94,7 @@ const itinerary = [
       },
       {
         time: "13:00",
-        title: "Almoço",
+        title: "Almoço na Bodeguita la Mantilla/Vaivén Arroces y Paellas, Restaurante Periañez(barat)",
         text: "Paragem de comida calma, sem pressa e com vista para a costa.",
         icon: Utensils,
       },
@@ -112,7 +112,7 @@ const itinerary = [
       },
       {
         time: "21:30",
-        title: "Jantar",
+        title: "Jantar Meson Diego / Al Carbón(grelhados) / Periañez Ría Brasas(grelhados moderno)",
         text: "Um jantar simples, sem agenda, para fechar o dia como se fosse uma pausa de férias.",
         icon: Utensils,
       },
@@ -128,7 +128,7 @@ const itinerary = [
     title: "Última praia e chegada à cidade",
     description:
       "Aproveitar a manhã na praia, almoçar e seguir para Sevilha com a tarde livre para explorar o centro e jantar pelos azulejos.",
-    image: "/images/dia-3-nao-encontrada.jpg",
+    image: images.punta3,
     imagePosition: "left center",
     accent: "sea",
     mood: "transição",
@@ -143,7 +143,7 @@ const itinerary = [
       },
       {
         time: "13:00",
-        title: "Almoço",
+        title: "Almoço na Bodeguita la Mantilla/Vaivén Arroces y Paellas, Restaurante Periañez(barato)",
         text: "Comer sem pressa e preparar a saída para a cidade.",
         icon: Utensils,
       },
